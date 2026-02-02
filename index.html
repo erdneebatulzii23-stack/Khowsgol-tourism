@@ -3,110 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Mongolia App</title>
+    <title>Travel Booking App</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2e86de; --bg: #f8f9fa; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--bg); }
-        
-        /* Хуудсуудыг нуух/ил гаргах */
+        :root { --primary: #2e86de; --bg: #f4f7f6; --success: #27ae60; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--bg); color: #333; }
         .page { display: none; padding: 20px; animation: fadeIn 0.3s; }
         .active { display: block; }
-
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Нүүр хуудас */
-        #home-page { text-align: center; padding-top: 100px; }
-        .main-btn { background: var(--primary); color: white; padding: 20px 40px; border: none; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(46, 134, 222, 0.4); }
-
-        /* Карт загвар */
-        .card { background: white; border-radius: 15px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        /* Жагсаалтын загвар */
+        .card { background: white; border-radius: 15px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; }
         .card img { width: 100%; height: 150px; object-fit: cover; }
         .card-body { padding: 15px; }
 
-        /* Дэлгэрэнгүй хэсэг */
-        .details-header { position: relative; }
-        .back-btn { background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 15px; border-radius: 5px; position: absolute; top: 10px; left: 10px; cursor: pointer; }
-        .info-section { background: white; padding: 20px; border-radius: 20px; margin-top: -20px; position: relative; }
-        .menu-item { border-bottom: 1px solid #eee; padding: 15px 0; }
-        .menu-item strong { display: block; color: var(--primary); font-size: 14px; }
+        /* Формын загвар */
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit; }
+        
+        .price-display { background: #fff; padding: 15px; border-radius: 10px; border: 2px dashed var(--primary); margin: 20px 0; text-align: center; }
+        .total-price { font-size: 24px; font-weight: bold; color: var(--primary); }
 
-        .book-btn { background: #27ae60; color: white; display: block; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; margin-top: 20px; }
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 10px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-success { background: var(--success); color: white; }
+        .btn-back { background: none; color: #666; text-decoration: underline; }
     </style>
 </head>
 <body>
 
-<div id="home-page" class="page active">
-    <h1>Тавтай морилно уу</h1>
-    <p>Монгол орныхоо үзэсгэлэнт газруудаар аялаарай</p>
-    <button class="main-btn" onclick="showPage('list-page')">Аялал сонгох</button>
+<div id="home-page" class="page active" style="text-align: center; padding-top: 80px;">
+    <h1>Монгол Аялал</h1>
+    <p>Таны адал явдал эндээс эхэлнэ</p>
+    <button class="btn btn-primary" onclick="showPage('list-page')" style="width: auto; padding: 15px 40px;">Аялал сонгох</button>
 </div>
 
 <div id="list-page" class="page">
-    <button onclick="showPage('home-page')" style="margin-bottom: 20px; border: none; background: none; color: var(--primary); font-weight: bold;">← Буцах</button>
-    <h2>Аялал сонгох</h2>
-    
-    <div class="card" onclick="showDetails('khuvsgul')">
-        <img src="https://travelers.mn/uploads/posts/2021-05/1620717255_khuvsgul-lake.jpg">
-        <div class="card-body"><strong>Хөвсгөл нуур</strong><br><small>4 өдөр / 3 шөнө</small></div>
-    </div>
-
-    <div class="card" onclick="showDetails('terelj')">
-        <img src="https://images.unsplash.com/photo-1596239304822-631628d9980d?w=500">
-        <div class="card-body"><strong>Тэрэлж аялал</strong><br><small>1 өдөр</small></div>
-    </div>
+    <h2>Аяллууд</h2>
+    <div id="travel-list"></div>
+    <button class="btn btn-back" onclick="showPage('home-page')">Буцах</button>
 </div>
 
-<div id="details-page" class="page">
-    <div class="details-header">
-        <button class="back-btn" onclick="showPage('list-page')">← Буцах</button>
-        <img id="detail-img" src="" style="width: 100%; height: 250px; object-fit: cover;">
+<div id="booking-page" class="page">
+    <h2 id="booking-title">Захиалга</h2>
+    
+    <div class="form-group">
+        <label>Хөтөч сонгох</label>
+        <select id="guide-select" onchange="calculateTotal()">
+            <option value="0">Хөтөчгүй (0₮)</option>
+            <option value="50000">Мэргэжлийн хөтөч (+50,000₮)</option>
+        </select>
     </div>
-    <div class="info-section">
-        <h2 id="detail-title"></h2>
-        <div class="menu-item"><strong>Хэдэн өдөр:</strong> <span id="detail-days"></span></div>
-        <div class="menu-item"><strong>Байрлах газар:</strong> <span id="detail-stay"></span></div>
-        <div class="menu-item"><strong>Аяллын хөтөлбөр:</strong> <span id="detail-plan"></span></div>
-        <a id="wa-link" href="" class="book-btn">Бүртгүүлэх</a>
+
+    <div class="form-group">
+        <label>Аялах хүний тоо</label>
+        <input type="number" id="people-count" value="1" min="1" onchange="calculateTotal()" onkeyup="calculateTotal()">
     </div>
+
+    <div class="form-group">
+        <label>Таны нэр</label>
+        <input type="text" id="user-name" placeholder="Овог нэр">
+    </div>
+
+    <div class="form-group">
+        <label>Утасны дугаар</label>
+        <input type="tel" id="user-phone" placeholder="9911....">
+    </div>
+
+    <div class="form-group">
+        <label>Имэйл хаяг</label>
+        <input type="email" id="user-email" placeholder="example@mail.com">
+    </div>
+
+    <div class="price-display">
+        <p>Нийт төлбөр:</p>
+        <div class="total-price" id="display-total">0₮</div>
+    </div>
+
+    <button class="btn btn-success" onclick="completeBooking()">Төлбөр төлөх / Баталгаажуулах</button>
+    <button class="btn btn-back" onclick="showPage('list-page')">Цааш үзэх</button>
 </div>
 
 <script>
-    const travelData = {
-        khuvsgul: {
-            title: "Хөвсгөл нуур - Далайн эрэг",
-            img: "https://travelers.mn/uploads/posts/2021-05/1620717255_khuvsgul-lake.jpg",
-            days: "4 өдөр, 3 шөнө",
-            stay: "Жуулчны бааз / Гэр",
-            plan: "Хатгал тосгон, Хүсэл хад, Цаатан айлаар зочлох",
-            wa: "https://wa.me/97699112233?text=Хөвсгөл аялалд бүртгүүлье"
-        },
-        terelj: {
-            title: "Тэрэлж - Байгалийн сайханд",
-            img: "https://images.unsplash.com/photo-1596239304822-631628d9980d?w=500",
-            days: "1 өдөр",
-            stay: "Хаус, Гэр",
-            plan: "Мэлхий хад, Арияабал хийд, Морин аялал",
-            wa: "https://wa.me/97699112233?text=Тэрэлж аялалд бүртгүүлье"
-        }
-    };
+    const travels = [
+        { id: 'khuvsgul', title: 'Хөвсгөл нуур', price: 450000, img: 'https://travelers.mn/uploads/posts/2021-05/1620717255_khuvsgul-lake.jpg' },
+        { id: 'gobi', title: 'Говийн аялал', price: 580000, img: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=500' }
+    ];
 
-    function showPage(pageId) {
+    let currentTravel = null;
+
+    function init() {
+        const listDiv = document.getElementById('travel-list');
+        travels.forEach(t => {
+            listDiv.innerHTML += `
+                <div class="card" onclick="startBooking('${t.id}')">
+                    <img src="${t.img}">
+                    <div class="card-body"><strong>${t.title}</strong><br>${t.price.toLocaleString()}₮</div>
+                </div>
+            `;
+        });
+    }
+
+    function showPage(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
-        window.scrollTo(0,0);
+        document.getElementById(id).classList.add('active');
     }
 
-    function showDetails(id) {
-        const data = travelData[id];
-        document.getElementById('detail-title').innerText = data.title;
-        document.getElementById('detail-img').src = data.img;
-        document.getElementById('detail-days').innerText = data.days;
-        document.getElementById('detail-stay').innerText = data.stay;
-        document.getElementById('detail-plan').innerText = data.plan;
-        document.getElementById('wa-link').href = data.wa;
-        showPage('details-page');
+    function startBooking(id) {
+        currentTravel = travels.find(t => t.id === id);
+        document.getElementById('booking-title').innerText = currentTravel.title;
+        calculateTotal();
+        showPage('booking-page');
     }
+
+    function calculateTotal() {
+        const guidePrice = parseInt(document.getElementById('guide-select').value);
+        const count = parseInt(document.getElementById('people-count').value) || 1;
+        const total = (currentTravel.price + guidePrice) * count;
+        document.getElementById('display-total').innerText = total.toLocaleString() + '₮';
+    }
+
+    function completeBooking() {
+        const name = document.getElementById('user-name').value;
+        const phone = document.getElementById('user-phone').value;
+        const total = document.getElementById('display-total').innerText;
+        
+        if(!name || !phone) {
+            alert('Нэр болон утсаа бөглөнө үү!');
+            return;
+        }
+
+        alert(`Баяр хүргэе ${name}! Таны ${total} захиалга бүртгэгдлээ. Бид ${phone} дугаараар холбогдох болно.`);
+        showPage('home-page');
+    }
+
+    init();
 </script>
 
 </body>
