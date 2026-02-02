@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongolia Travel App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2e86de;
+            --accent-color: #f39c12;
+            --bg-color: #f4f7f6;
+            --text-color: #2d3436;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* Апп-ын толгой хэсэг */
+        header {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+            color: var(--primary-color);
+        }
+
+        /* Аяллын жагсаалт */
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Аяллын карт */
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: #636e72;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        /* Захиалах товчлуур */
+        .book-btn {
+            display: block;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .book-btn:hover {
+            background-color: #2173c5;
+        }
+
+        /* WhatsApp товчлуурын өнгө */
+        .whatsapp-btn {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🇲🇳 Аялал Захиалга</h1>
+</header>
+
+<div class="container">
+    
+    <div class="card">
+        <img src="https://travelers.mn/uploads/posts/2021-05/1620717255_khuvsgul-lake.jpg" alt="Хөвсгөл">
+        <div class="card-content">
+            <div class="card-title">Хөвсгөл - Цаатан аялал</div>
+            <div class="card-price">450,000₮</div>
+            <p class="card-desc">Хөвсгөл нуурын эрэгт амарч, цаатан айлаар зочлох 4 өдрийн аялал.</p>
+            <a href="https://wa.me/97699112233?text=Хөвсгөл аялал захиалмаар байна" class="book-btn whatsapp-btn">WhatsApp-аар захиалах</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Говь">
+        <div class="card-content">
+            <div class="card-title">Өмнөговь - Хонгорын элс</div>
+            <div class="card-price">580,000₮</div>
+            <p class="card-desc">Баянзаг, Хонгорын элсээр аялах адал явдалт говийн аялал.</p>
+            <a href="https://wa.me/97699112233?text=Говь аялал захиалмаар байна" class="book-btn whatsapp-btn">WhatsApp-аар захиалах</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1596239304822-631628d9980d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Тэрэлж">
+        <div class="card-content">
+            <div class="card-title">Тэрэлж - Морин аялал</div>
+            <div class="card-price">120,000₮</div>
+            <p class="card-desc">Улаанбаатарт ойрхон байгалийн сайханд 1 өдрийг өнгөрөөх аялал.</p>
+            <a href="https://wa.me/97699112233?text=Тэрэлж аялал захиалмаар байна" class="book-btn whatsapp-btn">WhatsApp-аар захиалах</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
