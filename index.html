@@ -3,155 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mongolia Travel App</title>
+    <title>Travel Mongolia App</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2e86de;
-            --accent-color: #f39c12;
-            --bg-color: #f4f7f6;
-            --text-color: #2d3436;
-        }
+        :root { --primary: #2e86de; --bg: #f8f9fa; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--bg); }
+        
+        /* Хуудсуудыг нуух/ил гаргах */
+        .page { display: none; padding: 20px; animation: fadeIn 0.3s; }
+        .active { display: block; }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Апп-ын толгой хэсэг */
-        header {
-            background-color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+        /* Нүүр хуудас */
+        #home-page { text-align: center; padding-top: 100px; }
+        .main-btn { background: var(--primary); color: white; padding: 20px 40px; border: none; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(46, 134, 222, 0.4); }
 
-        header h1 {
-            margin: 0;
-            font-size: 22px;
-            color: var(--primary-color);
-        }
+        /* Карт загвар */
+        .card { background: white; border-radius: 15px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 150px; object-fit: cover; }
+        .card-body { padding: 15px; }
 
-        /* Аяллын жагсаалт */
-        .container {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
+        /* Дэлгэрэнгүй хэсэг */
+        .details-header { position: relative; }
+        .back-btn { background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 15px; border-radius: 5px; position: absolute; top: 10px; left: 10px; cursor: pointer; }
+        .info-section { background: white; padding: 20px; border-radius: 20px; margin-top: -20px; position: relative; }
+        .menu-item { border-bottom: 1px solid #eee; padding: 15px 0; }
+        .menu-item strong { display: block; color: var(--primary); font-size: 14px; }
 
-        /* Аяллын карт */
-        .card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.2s;
-        }
-
-        .card:active {
-            transform: scale(0.98);
-        }
-
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 15px;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .card-price {
-            color: var(--primary-color);
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: #636e72;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        /* Захиалах товчлуур */
-        .book-btn {
-            display: block;
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .book-btn:hover {
-            background-color: #2173c5;
-        }
-
-        /* WhatsApp товчлуурын өнгө */
-        .whatsapp-btn {
-            background-color: #27ae60;
-        }
+        .book-btn { background: #27ae60; color: white; display: block; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>🇲🇳 Аялал Захиалга</h1>
-</header>
-
-<div class="container">
-    
-    <div class="card">
-        <img src="https://travelers.mn/uploads/posts/2021-05/1620717255_khuvsgul-lake.jpg" alt="Хөвсгөл">
-        <div class="card-content">
-            <div class="card-title">Хөвсгөл - Цаатан аялал</div>
-            <div class="card-price">450,000₮</div>
-            <p class="card-desc">Хөвсгөл нуурын эрэгт амарч, цаатан айлаар зочлох 4 өдрийн аялал.</p>
-            <a href="https://wa.me/97699112233?text=Хөвсгөл аялал захиалмаар байна" class="book-btn whatsapp-btn">WhatsApp-аар захиалах</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Говь">
-        <div class="card-content">
-            <div class="card-title">Өмнөговь - Хонгорын элс</div>
-            <div class="card-price">580,000₮</div>
-            <p class="card-desc">Баянзаг, Хонгорын элсээр аялах адал явдалт говийн аялал.</p>
-            <a href="https://wa.me/97699112233?text=Говь аялал захиалмаар байна" class="book-btn whatsapp-btn">WhatsApp-аар захиалах</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1596239304822-631628d9980d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Тэрэлж">
-        <div class="card-content">
-            <div class="card-title">Тэрэлж - Морин аялал</div>
-            <div class="card-price">120,000₮</div>
-            <p class="card-desc">Улаанбаатарт ойрхон байгалийн сайханд 1 өдрийг өнгөрөөх аялал.</p>
-            <a href="https://wa.me/97699112233?text=Тэрэлж аялал захиалмаар байна" class="book-btn whatsapp-btn">WhatsApp-аар захиалах</a>
-        </div>
-    </div>
-
+<div id="home-page" class="page active">
+    <h1>Тавтай морилно уу</h1>
+    <p>Монгол орныхоо үзэсгэлэнт газруудаар аялаарай</p>
+    <button class="main-btn" onclick="showPage('list-page')">Аялал сонгох</button>
 </div>
+
+<div id="list-page" class="page">
+    <button onclick="showPage('home-page')" style="margin-bottom: 20px; border: none; background: none; color: var(--primary); font-weight: bold;">← Буцах</button>
+    <h2>Аялал сонгох</h2>
+    
+    <div class="card" onclick="showDetails('khuvsgul')">
+        <img src="https://travelers.mn/uploads/posts/2021-05/1620717255_khuvsgul-lake.jpg">
+        <div class="card-body"><strong>Хөвсгөл нуур</strong><br><small>4 өдөр / 3 шөнө</small></div>
+    </div>
+
+    <div class="card" onclick="showDetails('terelj')">
+        <img src="https://images.unsplash.com/photo-1596239304822-631628d9980d?w=500">
+        <div class="card-body"><strong>Тэрэлж аялал</strong><br><small>1 өдөр</small></div>
+    </div>
+</div>
+
+<div id="details-page" class="page">
+    <div class="details-header">
+        <button class="back-btn" onclick="showPage('list-page')">← Буцах</button>
+        <img id="detail-img" src="" style="width: 100%; height: 250px; object-fit: cover;">
+    </div>
+    <div class="info-section">
+        <h2 id="detail-title"></h2>
+        <div class="menu-item"><strong>Хэдэн өдөр:</strong> <span id="detail-days"></span></div>
+        <div class="menu-item"><strong>Байрлах газар:</strong> <span id="detail-stay"></span></div>
+        <div class="menu-item"><strong>Аяллын хөтөлбөр:</strong> <span id="detail-plan"></span></div>
+        <a id="wa-link" href="" class="book-btn">Бүртгүүлэх</a>
+    </div>
+</div>
+
+<script>
+    const travelData = {
+        khuvsgul: {
+            title: "Хөвсгөл нуур - Далайн эрэг",
+            img: "https://travelers.mn/uploads/posts/2021-05/1620717255_khuvsgul-lake.jpg",
+            days: "4 өдөр, 3 шөнө",
+            stay: "Жуулчны бааз / Гэр",
+            plan: "Хатгал тосгон, Хүсэл хад, Цаатан айлаар зочлох",
+            wa: "https://wa.me/97699112233?text=Хөвсгөл аялалд бүртгүүлье"
+        },
+        terelj: {
+            title: "Тэрэлж - Байгалийн сайханд",
+            img: "https://images.unsplash.com/photo-1596239304822-631628d9980d?w=500",
+            days: "1 өдөр",
+            stay: "Байрлахгүй",
+            plan: "Мэлхий хад, Арияабал хийд, Морин аялал",
+            wa: "https://wa.me/97699112233?text=Тэрэлж аялалд бүртгүүлье"
+        }
+    };
+
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function showDetails(id) {
+        const data = travelData[id];
+        document.getElementById('detail-title').innerText = data.title;
+        document.getElementById('detail-img').src = data.img;
+        document.getElementById('detail-days').innerText = data.days;
+        document.getElementById('detail-stay').innerText = data.stay;
+        document.getElementById('detail-plan').innerText = data.plan;
+        document.getElementById('wa-link').href = data.wa;
+        showPage('details-page');
+    }
+</script>
 
 </body>
 </html>
