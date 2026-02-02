@@ -1,133 +1,48 @@
-<!DOCTYPE html>
-<html lang="mn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Travel Pro Mongolia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary: #2e86de; --partner: #8e44ad; --guide: #e67e22; --bg: #f4f7f6; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--bg); -webkit-tap-highlight-color: transparent; }
-        .page { display: none; padding: 20px; box-sizing: border-box; min-height: 100vh; }
-        .active { display: block; }
-        
-        /* Роль сонгох хэсэг */
-        .role-container { text-align: center; padding-top: 50px; }
-        .role-card { background: white; padding: 25px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; border: 2px solid transparent; }
-        .role-card:active { transform: scale(0.95); }
-        .role-user { border-left: 8px solid var(--primary); }
-        .role-partner { border-left: 8px solid var(--partner); }
-        .role-guide { border-left: 8px solid var(--guide); }
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+    />
 
-        /* Форм болон Товчлуур */
-        input, textarea, select { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 12px; font-size: 16px; box-sizing: border-box; }
-        .btn { width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; color: white; cursor: pointer; margin-top: 10px; }
-        .btn-primary { background: var(--primary); }
-        .btn-partner { background: var(--partner); }
-        .btn-guide { background: var(--guide); }
-        .btn-back { background: #636e72; margin-top: 20px; }
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
-        /* Аяллын карт */
-        .travel-card { background: white; border-radius: 20px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
-        .travel-card img { width: 100%; height: 200px; object-fit: cover; }
-        .card-info { padding: 20px; }
-        .price-tag { color: var(--primary); font-size: 20px; font-weight: bold; }
-    </style>
-</head>
-<body>
-
-<div id="page-role" class="page active">
-    <div class="role-container">
-        <h1>Travel Pro</h1>
-        <p>Таны үүрэг юу вэ?</p>
-        <div class="role-card role-user" onclick="navigate('page-user')">
-            <h3>👤 Хэрэглэгч</h3>
-            <p>Аялал хайх, захиалга өгөх</p>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col bg-slate-50 justify-between group/design-root overflow-x-hidden"
+      style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'
+    >
+      <div>
+        <div class="@container">
+          <div class="@[480px]:px-4 @[480px]:py-3">
+            <div
+              class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-slate-50 @[480px]:rounded-lg min-h-80"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4E8aucCsUIwFcaGZZmIn1rzIGdWZhkQ4Xw4o9GLuXGiqtA30y23lRyAzVzpIzJQ4W0Dwf_MGeo4-QB658Jri5rCNXsmRPQWTctHYfdJ1rw6hQVJiM70tjwKk4WEBQpbzynkixmrsSPB8S7Z_0aIn4pClHwl_fsQsX-0rpLTiGau_E3Ja0CuoSzrafrwAxGl5cxwvpSndqaxBYnXTcv15Ar1ym5IQVeIcqJKZBpcEMldWOTv7CV3zTxHfRF4tB3C5gFDigQU04oLv8");'
+            ></div>
+          </div>
         </div>
-        <div class="role-card role-partner" onclick="navigate('page-partner')">
-            <h3>🏢 Партнэр</h3>
-            <p>Өөрийн аяллыг нийтлэх</p>
+        <h2 class="text-[#0d141b] tracking-light text-[28px] font-bold leading-tight px-4 text-left pb-3 pt-5">Your Journey Starts Here</h2>
+        <p class="text-[#0d141b] text-base font-normal leading-normal pb-3 pt-1 px-4">Discover the best travel deals and create unforgettable memories with ease.</p>
+        <div class="flex w-full flex-row items-center justify-center gap-3 py-5">
+          <div class="h-2 w-2 rounded-full bg-[#1380ec]"></div>
+          <div class="h-2 w-2 rounded-full bg-[#cfdbe7]"></div>
+          <div class="h-2 w-2 rounded-full bg-[#cfdbe7]"></div>
         </div>
-        <div class="role-card role-guide" onclick="navigate('page-guide')">
-            <h3>🚩 Хөтөч</h3>
-            <p>Хөтөчөөр бүртгүүлэх</p>
+        <div class="flex px-4 py-3">
+          <button
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 flex-1 bg-[#1380ec] text-slate-50 text-base font-bold leading-normal tracking-[0.015em]"
+          >
+            <span class="truncate">Get Started</span>
+          </button>
         </div>
+      </div>
+      <div><div class="h-5 bg-slate-50"></div></div>
     </div>
-</div>
-
-<div id="page-partner" class="page">
-    <h2>Шинэ аялал нэмэх</h2>
-    <input type="text" id="p-title" placeholder="Аяллын нэр">
-    <input type="text" id="p-img" placeholder="Зургийн линк (URL)">
-    <input type="number" id="p-price" placeholder="Үнэ (₮)">
-    <textarea id="p-plan" rows="5" placeholder="Аяллын төлөвлөгөө..."></textarea>
-    <button class="btn btn-partner" onclick="addTrip()">Нийтлэх</button>
-    <button class="btn btn-back" onclick="navigate('page-role')">Буцах</button>
-</div>
-
-<div id="page-user" class="page">
-    <h2>Аяллын жагсаалт</h2>
-    <div id="trip-list"></div>
-    <button class="btn btn-back" onclick="navigate('page-role')">Буцах</button>
-</div>
-
-<div id="page-guide" class="page">
-    <h2>Хөтөчөөр бүртгүүлэх</h2>
-    <input type="text" placeholder="Овог Нэр">
-    <input type="tel" placeholder="Утасны дугаар">
-    <select>
-        <option>Англи хэл</option>
-        <option>Орос хэл</option>
-        <option>Хятад хэл</option>
-    </select>
-    <button class="btn btn-guide" onclick="alert('Бүртгэл илгээгдлээ!')">Илгээх</button>
-    <button class="btn btn-back" onclick="navigate('page-role')">Буцах</button>
-</div>
-
-<script>
-    // Санах ойд хадгалах аяллын дата
-    let trips = [
-        { title: "Хөвсгөл нуур", price: 450000, plan: "4 өдрийн аялал", img: "https://travelers.mn/uploads/posts/2021-05/1620717255_khuvsgul-lake.jpg" }
-    ];
-
-    function navigate(pageId) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
-        if(pageId === 'page-user') renderTrips();
-    }
-
-    function addTrip() {
-        const title = document.getElementById('p-title').value;
-        const price = document.getElementById('p-price').value;
-        const img = document.getElementById('p-img').value;
-        const plan = document.getElementById('p-plan').value;
-
-        if(!title || !price) return alert("Мэдээлэл дутуу байна!");
-
-        trips.push({ title, price, plan, img: img || 'https://via.placeholder.com/400x200?text=Аялал' });
-        alert("Амжилттай нийтлэгдлээ!");
-        navigate('page-user');
-    }
-
-    function renderTrips() {
-        const container = document.getElementById('trip-list');
-        container.innerHTML = '';
-        trips.forEach(t => {
-            container.innerHTML += `
-                <div class="travel-card">
-                    <img src="${t.img}">
-                    <div class="card-info">
-                        <h3>${t.title}</h3>
-                        <div class="price-tag">${parseInt(t.price).toLocaleString()}₮</div>
-                        <p>${t.plan}</p>
-                        <button class="btn btn-primary" onclick="alert('Захиалга хүлээн авлаа!')">Захиалах</button>
-                    </div>
-                </div>
-            `;
-        });
-    }
-</script>
-</body>
+  </body>
 </html>
-
-
