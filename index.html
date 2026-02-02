@@ -3,143 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Booking App</title>
+    <title>Travel Pro Platform</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2e86de; --bg: #f4f7f6; --success: #27ae60; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--bg); color: #333; }
+        :root { --primary: #2e86de; --partner: #8e44ad; --guide: #e67e22; --bg: #f4f7f6; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--bg); }
         .page { display: none; padding: 20px; animation: fadeIn 0.3s; }
         .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Жагсаалтын загвар */
-        .card { background: white; border-radius: 15px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; }
-        .card img { width: 100%; height: 150px; object-fit: cover; }
+        /* Role Selection */
+        .role-card { background: white; padding: 20px; border-radius: 15px; margin-bottom: 15px; text-align: center; border: 2px solid transparent; cursor: pointer; transition: 0.3s; }
+        .role-user { border-color: var(--primary); }
+        .role-partner { border-color: var(--partner); }
+        .role-guide { border-color: var(--guide); }
+
+        /* Form styling */
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, textarea, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        
+        /* Travel Card */
+        .card { background: white; border-radius: 15px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
         .card-body { padding: 15px; }
 
-        /* Формын загвар */
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit; }
-        
-        .price-display { background: #fff; padding: 15px; border-radius: 10px; border: 2px dashed var(--primary); margin: 20px 0; text-align: center; }
-        .total-price { font-size: 24px; font-weight: bold; color: var(--primary); }
-
-        .btn { width: 100%; padding: 15px; border: none; border-radius: 10px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-back { background: none; color: #666; text-decoration: underline; }
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; color: white; margin-top: 10px; }
+        .btn-primary { background: var(--primary); }
+        .btn-partner { background: var(--partner); }
+        .btn-back { background: #636e72; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-<div id="home-page" class="page active" style="text-align: center; padding-top: 80px;">
-    <h1>Монгол Аялал</h1>
-    <p>Таны адал явдал эндээс эхэлнэ</p>
-    <button class="btn btn-primary" onclick="showPage('list-page')" style="width: auto; padding: 15px 40px;">Аялал сонгох</button>
+<div id="role-page" class="page active">
+    <h2 style="text-align: center;">Та хэн бэ?</h2>
+    <div class="role-card role-user" onclick="setRole('user')">
+        <h3>👤 Хэрэглэгч</h3>
+        <p>Аялал хайх, захиалах</p>
+    </div>
+    <div class="role-card role-partner" onclick="setRole('partner')">
+        <h3>🏢 Партнэр</h3>
+        <p>Аяллын хөтөлбөр нэмэх</p>
+    </div>
+    <div class="role-card role-guide" onclick="setRole('guide')">
+        <h3>🚩 Хөтөч</h3>
+        <p>Аяллын хөтөчөөр бүртгүүлэх</p>
+    </div>
 </div>
 
-<div id="list-page" class="page">
-    <h2>Аяллууд</h2>
-    <div id="travel-list"></div>
-    <button class="btn btn-back" onclick="showPage('home-page')">Буцах</button>
+<div id="partner-page" class="page">
+    <h2>Шинэ аялал нэмэх</h2>
+    <div class="form-group">
+        <label>Аяллын нэр</label>
+        <input type="text" id="p-title" placeholder="Жишээ: Өгий нуурын аялал">
+    </div>
+    <div class="form-group">
+        <label>Зургийн линк (URL)</label>
+        <input type="text" id="p-img" placeholder="https://image-link.jpg">
+    </div>
+    <div class="form-group">
+        <label>Үнэ (₮)</label>
+        <input type="number" id="p-price">
+    </div>
+    <div class="form-group">
+        <label>Аяллын төлөвлөгөө</label>
+        <textarea id="p-plan" rows="4" placeholder="1-р өдөр: УБ-аас гарна..."></textarea>
+    </div>
+    <button class="btn btn-partner" onclick="addTravel()">Аялал нийтлэх</button>
+    <button class="btn btn-back" onclick="showPage('role-page')">Гарах</button>
 </div>
 
-<div id="booking-page" class="page">
-    <h2 id="booking-title">Захиалга</h2>
-    
+<div id="user-page" class="page">
+    <h2>Боломжит аяллууд</h2>
+    <div id="travel-display"></div>
+    <button class="btn btn-back" onclick="showPage('role-page')">Буцах</button>
+</div>
+
+<div id="guide-page" class="page">
+    <h2>Хөтөчөөр бүртгүүлэх</h2>
     <div class="form-group">
-        <label>Хөтөч сонгох</label>
-        <select id="guide-select" onchange="calculateTotal()">
-            <option value="0">Хөтөчгүй (0₮)</option>
-            <option value="50000">Мэргэжлийн хөтөч (+50,000₮)</option>
-        </select>
+        <label>Овог нэр</label>
+        <input type="text" placeholder="Нэрээ бичнэ үү">
     </div>
-
     <div class="form-group">
-        <label>Аялах хүний тоо</label>
-        <input type="number" id="people-count" value="1" min="1" onchange="calculateTotal()" onkeyup="calculateTotal()">
+        <label>Туршлага (жилээр)</label>
+        <input type="number" placeholder="3">
     </div>
-
     <div class="form-group">
-        <label>Таны нэр</label>
-        <input type="text" id="user-name" placeholder="Овог нэр">
+        <label>Холбоо барих утас</label>
+        <input type="tel" placeholder="9911....">
     </div>
-
-    <div class="form-group">
-        <label>Утасны дугаар</label>
-        <input type="tel" id="user-phone" placeholder="9911....">
-    </div>
-
-    <div class="form-group">
-        <label>Имэйл хаяг</label>
-        <input type="email" id="user-email" placeholder="example@mail.com">
-    </div>
-
-    <div class="price-display">
-        <p>Нийт төлбөр:</p>
-        <div class="total-price" id="display-total">0₮</div>
-    </div>
-
-    <button class="btn btn-success" onclick="completeBooking()">Төлбөр төлөх / Баталгаажуулах</button>
-    <button class="btn btn-back" onclick="showPage('list-page')">Цааш үзэх</button>
+    <button class="btn btn-guide" style="background: var(--guide);" onclick="alert('Бүртгэл амжилттай!')">Бүртгүүлэх</button>
+    <button class="btn btn-back" onclick="showPage('role-page')">Буцах</button>
 </div>
 
 <script>
-    const travels = [
-        { id: 'khuvsgul', title: 'Хөвсгөл нуур', price: 450000, img: 'https://travelers.mn/uploads/posts/2021-05/1620717255_khuvsgul-lake.jpg' },
-        { id: 'gobi', title: 'Говийн аялал', price: 580000, img: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=500' }
+    // Анхны аяллын дата
+    let travels = [
+        { title: "Хөвсгөл нуур", price: 450000, plan: "Цаатан айл үзэх", img: "https://travelers.mn/uploads/posts/2021-05/1620717255_khuvsgul-lake.jpg" }
     ];
-
-    let currentTravel = null;
-
-    function init() {
-        const listDiv = document.getElementById('travel-list');
-        travels.forEach(t => {
-            listDiv.innerHTML += `
-                <div class="card" onclick="startBooking('${t.id}')">
-                    <img src="${t.img}">
-                    <div class="card-body"><strong>${t.title}</strong><br>${t.price.toLocaleString()}₮</div>
-                </div>
-            `;
-        });
-    }
 
     function showPage(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+        if(id === 'user-page') renderTravels();
     }
 
-    function startBooking(id) {
-        currentTravel = travels.find(t => t.id === id);
-        document.getElementById('booking-title').innerText = currentTravel.title;
-        calculateTotal();
-        showPage('booking-page');
+    function setRole(role) {
+        if(role === 'user') showPage('user-page');
+        else if(role === 'partner') showPage('partner-page');
+        else if(role === 'guide') showPage('guide-page');
     }
 
-    function calculateTotal() {
-        const guidePrice = parseInt(document.getElementById('guide-select').value);
-        const count = parseInt(document.getElementById('people-count').value) || 1;
-        const total = (currentTravel.price + guidePrice) * count;
-        document.getElementById('display-total').innerText = total.toLocaleString() + '₮';
+    // Партнэр аялал нэмэх функц
+    function addTravel() {
+        const title = document.getElementById('p-title').value;
+        const img = document.getElementById('p-img').value;
+        const price = document.getElementById('p-price').value;
+        const plan = document.getElementById('p-plan').value;
+
+        if(!title || !price) return alert("Мэдээллээ бүрэн бөглөнө үү!");
+
+        travels.push({ title, price, plan, img: img || 'https://via.placeholder.com/300' });
+        alert("Аялал амжилттай нэмэгдлээ!");
+        showPage('user-page');
     }
 
-    function completeBooking() {
-        const name = document.getElementById('user-name').value;
-        const phone = document.getElementById('user-phone').value;
-        const total = document.getElementById('display-total').innerText;
-        
-        if(!name || !phone) {
-            alert('Нэр болон утсаа бөглөнө үү!');
-            return;
-        }
-
-        alert(`Баяр хүргэе ${name}! Таны ${total} захиалга бүртгэгдлээ. Бид ${phone} дугаараар холбогдох болно.`);
-        showPage('home-page');
+    // Аяллуудыг хэрэглэгчид харуулах
+    function renderTravels() {
+        const display = document.getElementById('travel-display');
+        display.innerHTML = '';
+        travels.forEach(t => {
+            display.innerHTML += `
+                <div class="card">
+                    <img src="${t.img}">
+                    <div class="card-body">
+                        <h3>${t.title}</h3>
+                        <p><strong>Үнэ:</strong> ${t.price}₮</p>
+                        <p><strong>Хөтөлбөр:</strong> ${t.plan}</p>
+                        <button class="btn btn-primary" onclick="alert('Захиалгын хэсэг рүү шилжлээ')">Захиалах</button>
+                    </div>
+                </div>
+            `;
+        });
     }
-
-    init();
 </script>
-
 </body>
 </html>
