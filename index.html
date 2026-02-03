@@ -1,192 +1,203 @@
 <!DOCTYPE html>
-
-<html class="light" lang="mn"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Khuvsgul Guide - Нүүр хуудас</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="light" lang="mn">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Khuvsgul Travel App - All-in-One</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#2bbdee",
+                        "primary": "#1392ec",
                         "background-light": "#f6f7f8",
-                        "background-dark": "#101d22",
-                        "accent-earth": "#8d775f",
-                    },
-                    fontFamily: {
-                        "display": ["Plus Jakarta Sans"]
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-                },
-            },
+                        "background-dark": "#101a22",
+                    }
+                }
+            }
+        }
+
+        // Хуудас хооронд шилжих функц
+        function showPage(pageId) {
+            // Бүх хуудсыг нуух
+            document.querySelectorAll('.app-page').forEach(page => {
+                page.classList.add('hidden');
+            });
+            // Сонгосон хуудсыг харуулах
+            document.getElementById(pageId).classList.remove('hidden');
+            // Дээшээ гүйлгэх
+            window.scrollTo(0, 0);
         }
     </script>
-<style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); }
+        .dark .glass-card { background: rgba(16, 26, 34, 0.8); }
+        .app-page { min-height: 100vh; padding-bottom: 80px; }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="bg-background-light dark:bg-background-dark text-[#0d181b] dark:text-white min-h-screen">
-<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden max-w-[430px] mx-auto bg-white dark:bg-background-dark shadow-xl">
-<!-- TopAppBar -->
-<div class="flex items-center p-4 pb-2 justify-between sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
-<div class="text-[#0d181b] dark:text-white flex size-12 shrink-0 items-center justify-start">
-<span class="material-symbols-outlined">menu</span>
-</div>
-<h2 class="text-[#0d181b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center font-display">Khuvsgul Guide</h2>
-<div class="flex w-12 items-center justify-end">
-<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-primary text-white gap-2 text-base font-bold leading-normal">
-<span class="material-symbols-outlined text-[20px]">person</span>
-</button>
-</div>
-</div>
-<!-- HeaderImage / Hero Section -->
-<div class="@container">
-<div class="px-4 py-3">
-<div class="bg-cover bg-center flex flex-col justify-end overflow-hidden rounded-xl min-h-72 relative" data-alt="Crystal clear blue water of Lake Khuvsgul with mountains" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 50%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjVcq0t0oF6Ts12scKLsKReGInGot2LVCVWT5xj_w_0YSUdb2f5WzATLInJcFQN__k8-kkBT0yiRS25JVyiGgG6Lf3iL-nU6KwNSpp20Dq9T-rIOFN2wbLZfTaS8v6QES1TmtkNvm6VRjomTUwiFtqd-6ozmX2H9ejuwMdkQQvNP5uQrcrnBaSOXCYNPNxMEvDWaNo-MTHOhXlFJqs2BDcMZYrZJ5Wb4Glg-tZuiiGSx1G17BIeL7nq5UAaTlUtj0Q--jkwyRWkFZ_");'>
-<div class="flex flex-col p-6 gap-1">
-<p class="text-white/80 text-sm font-medium uppercase tracking-wider">Discover the Blue Pearl</p>
-<p class="text-white tracking-tight text-3xl font-bold leading-tight font-display">Experience Lake Khuvsgul</p>
-</div>
-</div>
-</div>
-</div>
-<!-- SearchBar -->
-<div class="px-4 py-3">
-<label class="flex flex-col min-w-40 h-14 w-full">
-<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
-<div class="text-[#4c869a] flex border-none bg-white dark:bg-[#1a2e35] items-center justify-center pl-4 rounded-l-xl border-r-0">
-<span class="material-symbols-outlined">search</span>
-</div>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-[#0d181b] dark:text-white focus:outline-0 focus:ring-0 border-none bg-white dark:bg-[#1a2e35] focus:border-none h-full placeholder:text-[#4c869a] px-4 pl-2 text-base font-normal leading-normal font-display" placeholder="Search destinations, tours, or resorts" value=""/>
-</div>
-</label>
-</div>
-<!-- SectionHeader: Categories -->
-<div class="flex items-center justify-between px-4 pt-4 pb-2">
-<h3 class="text-[#0d181b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] font-display">Categories</h3>
-<button class="text-primary text-sm font-semibold">View All</button>
-</div>
-<!-- Chips / Horizontal Categories -->
-<div class="flex gap-3 px-4 py-2 overflow-x-auto no-scrollbar">
-<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary px-5 text-white shadow-md shadow-primary/20">
-<span class="material-symbols-outlined text-[18px]">hotel</span>
-<p class="text-sm font-semibold leading-normal font-display">Resorts</p>
-</div>
-<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-[#1a2e35] border border-gray-100 dark:border-gray-800 px-5 text-[#0d181b] dark:text-gray-300">
-<span class="material-symbols-outlined text-[18px]">kayaking</span>
-<p class="text-sm font-medium leading-normal font-display">Activities</p>
-</div>
-<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-[#1a2e35] border border-gray-100 dark:border-gray-800 px-5 text-[#0d181b] dark:text-gray-300">
-<span class="material-symbols-outlined text-[18px]">restaurant</span>
-<p class="text-sm font-medium leading-normal font-display">Food</p>
-</div>
-<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-[#1a2e35] border border-gray-100 dark:border-gray-800 px-5 text-[#0d181b] dark:text-gray-300">
-<span class="material-symbols-outlined text-[18px]">hiking</span>
-<p class="text-sm font-medium leading-normal font-display">Tours</p>
-</div>
-</div>
-<!-- SectionHeader: Featured -->
-<div class="flex items-center justify-between px-4 pt-6 pb-2">
-<h3 class="text-[#0d181b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] font-display">Featured Destinations</h3>
-</div>
-<!-- Horizontal Scroll Cards -->
-<div class="flex gap-4 px-4 pb-8 overflow-x-auto no-scrollbar">
-<!-- Card 1: Khatgal -->
-<div class="min-w-[260px] flex flex-col gap-3 rounded-xl bg-white dark:bg-[#1a2e35] p-2 shadow-sm border border-gray-100 dark:border-gray-800">
-<div class="h-44 w-full rounded-lg bg-cover bg-center" data-alt="Aerial view of Khatgal village by the lake" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_1IwAQAxEFhfJWdU1qt2PNoidQGTMwAzImeOhTgoXPzJUYkEWIvgvAd1VVrcB9RjSptTYRvdG6PQQAIHknllZwUKJJDEvlQrtylCQRDivmbuE4MF91lDJcWCBeWLBp9OKUpM0UMl7Em7E17pFJooBXLwOFC9VUWPdUc3CXsZR59OPci7oe-kJsvE3yQ-a9c_Jm5svsj_4iEsjAPkp3cwjtZ_fK9BFC0ereN6pJKxQVFwayhvW0-4Opre83AXuNXNNSwCeKiOZOvsC");'></div>
-<div class="px-2 pb-2">
-<div class="flex justify-between items-start">
-<div>
-<h4 class="font-bold text-[#0d181b] dark:text-white text-base font-display">Khatgal Village</h4>
-<div class="flex items-center gap-1 text-gray-500 dark:text-gray-400 mt-0.5">
-<span class="material-symbols-outlined text-sm">location_on</span>
-<span class="text-xs">South Shore, Khuvsgul</span>
-</div>
-</div>
-<div class="flex items-center bg-yellow-400/10 px-1.5 py-0.5 rounded text-yellow-600 dark:text-yellow-400">
-<span class="material-symbols-outlined text-[14px] fill-current">star</span>
-<span class="text-xs font-bold ml-1">4.8</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Card 2: Khankh -->
-<div class="min-w-[260px] flex flex-col gap-3 rounded-xl bg-white dark:bg-[#1a2e35] p-2 shadow-sm border border-gray-100 dark:border-gray-800">
-<div class="h-44 w-full rounded-lg bg-cover bg-center" data-alt="Remote landscape of Khankh near the northern border" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfb4wSzkRPYzGfuHj839o1Qc2ZlY9b-V5oOokl1huS9anMs2axiLum4Y2CRQsxSdsPt37FEHPwhtst5trOEp3IqKiupC3pvUySg0mrfLCER110FWk6GnmtGZyTECtb7AsJadqG0qgEmPPPun2Al8BOS3NbkUKW9e9fAZ_-F3f4o4Eb253wfJY4grDVeazk5JGUpy_pzkP-J-FDjy3xqDEf3tTq0sblLnJGkg66YZc5EdTCbNzqAuNG31SzXIPsLIzaQDY4GD-gSpiA");'></div>
-<div class="px-2 pb-2">
-<div class="flex justify-between items-start">
-<div>
-<h4 class="font-bold text-[#0d181b] dark:text-white text-base font-display">Khankh Town</h4>
-<div class="flex items-center gap-1 text-gray-500 dark:text-gray-400 mt-0.5">
-<span class="material-symbols-outlined text-sm">location_on</span>
-<span class="text-xs">North Shore, Khuvsgul</span>
-</div>
-</div>
-<div class="flex items-center bg-yellow-400/10 px-1.5 py-0.5 rounded text-yellow-600 dark:text-yellow-400">
-<span class="material-symbols-outlined text-[14px] fill-current">star</span>
-<span class="text-xs font-bold ml-1">4.5</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Card 3: Khoridol Saridag -->
-<div class="min-w-[260px] flex flex-col gap-3 rounded-xl bg-white dark:bg-[#1a2e35] p-2 shadow-sm border border-gray-100 dark:border-gray-800">
-<div class="h-44 w-full rounded-lg bg-cover bg-center" data-alt="Snowy peaks of Khoridol Saridag mountains" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSsyXtIb4ud1W78E4nojljABjDA8EW4FW0YFI3BEBSByuna0_xye_mpkzit9_Fmlw3s9NVQy3gMGPGBMtYz_luXqbYroNdyYFME5avXAW7LQ-k9rAId1sX04qhGYwDu28C-E8YI9tbKGUkA7s-_BQccCV7W5cfNmgpH3URv7UKyG_0o39obbZaWFkkaicHnTjte2ULSXVTCptl9PObx_YG9XOeABEyaUcDvMVViw8966Kk9rYgvgQy1DB8g_f96tuaYsQVwQkJcFIR");'></div>
-<div class="px-2 pb-2">
-<div class="flex justify-between items-start">
-<div>
-<h4 class="font-bold text-[#0d181b] dark:text-white text-base font-display">Khoridol Saridag</h4>
-<div class="flex items-center gap-1 text-gray-500 dark:text-gray-400 mt-0.5">
-<span class="material-symbols-outlined text-sm">location_on</span>
-<span class="text-xs">Mountain Range, West</span>
-</div>
-</div>
-<div class="flex items-center bg-yellow-400/10 px-1.5 py-0.5 rounded text-yellow-600 dark:text-yellow-400">
-<span class="material-symbols-outlined text-[14px] fill-current">star</span>
-<span class="text-xs font-bold ml-1">4.9</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Navigation Bar (iOS Style) -->
-<div class="mt-auto flex justify-around items-center border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-background-dark py-3 px-6 sticky bottom-0">
-<div class="flex flex-col items-center gap-1 text-primary">
-<span class="material-symbols-outlined filled">home</span>
-<span class="text-[10px] font-bold">Explore</span>
-</div>
-<div class="flex flex-col items-center gap-1 text-gray-400">
-<span class="material-symbols-outlined">favorite</span>
-<span class="text-[10px] font-medium">Saved</span>
-</div>
-<div class="flex flex-col items-center gap-1 text-gray-400">
-<span class="material-symbols-outlined">map</span>
-<span class="text-[10px] font-medium">Map</span>
-</div>
-<div class="flex flex-col items-center gap-1 text-gray-400">
-<span class="material-symbols-outlined">notifications</span>
-<span class="text-[10px] font-medium">Alerts</span>
-</div>
-</div>
-</div>
-</body></html>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d161b] dark:text-slate-50">
+
+    <section id="login" class="app-page relative flex items-center justify-center p-6">
+        <div class="absolute inset-0 z-0">
+            <div class="w-full h-full bg-center bg-cover" style='background-image: url("https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6?auto=format&fit=crop&q=80");'></div>
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div class="relative z-10 w-full max-w-md glass-card rounded-3xl p-8 shadow-2xl">
+            <div class="text-center mb-8">
+                <div class="size-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/30 text-white">
+                    <span class="material-symbols-outlined text-4xl">landscape</span>
+                </div>
+                <h1 class="text-2xl font-bold">Нэвтрэх</h1>
+                <p class="text-slate-500 text-sm">Хөвсгөл нуурт тавтай морил</p>
+            </div>
+            <div class="space-y-4">
+                <input class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:bg-slate-800" placeholder="Имэйл эсвэл Утас">
+                <input class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:bg-slate-800" type="password" placeholder="Нууц үг">
+                <button onclick="showPage('home')" class="w-full bg-primary text-white h-12 rounded-xl font-bold shadow-lg shadow-primary/30">Нэвтрэх</button>
+                <p class="text-center text-sm">Бүртгэлгүй юу? <span onclick="showPage('signup')" class="text-primary font-bold cursor-pointer">Бүртгүүлэх</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="signup" class="app-page hidden p-6">
+        <button onclick="showPage('login')" class="mb-6 flex items-center gap-2 text-slate-500"><span class="material-symbols-outlined">arrow_back</span> Буцах</button>
+        <h1 class="text-3xl font-bold mb-2">Бүртгүүлэх</h1>
+        <div class="space-y-4 mt-8">
+            <div class="flex bg-slate-200 dark:bg-slate-800 p-1 rounded-xl">
+                <button class="flex-1 py-2 bg-white dark:bg-slate-700 rounded-lg text-sm font-bold">Аялагч</button>
+                <button class="flex-1 py-2 text-sm">Бизнес</button>
+            </div>
+            <input class="w-full h-14 px-4 rounded-xl border border-slate-200 dark:bg-slate-800" placeholder="Бүтэн нэр">
+            <input class="w-full h-14 px-4 rounded-xl border border-slate-200 dark:bg-slate-800" placeholder="Имэйл">
+            <button onclick="showPage('home')" class="w-full bg-primary text-white h-14 rounded-xl font-bold mt-4">Бүртгэл үүсгэх</button>
+        </div>
+    </section>
+
+    <section id="home" class="app-page hidden">
+        <header class="p-6 flex justify-between items-center">
+            <div>
+                <p class="text-slate-500 text-sm italic">Сайн байна уу?</p>
+                <h2 class="text-xl font-bold">Аяллаа эхлүүлцгээе 🏕️</h2>
+            </div>
+            <div class="size-12 rounded-full bg-slate-200 overflow-hidden border-2 border-primary">
+                <img src="https://i.pravatar.cc/150?u=1" alt="avatar">
+            </div>
+        </header>
+        
+        <div class="px-6 space-y-6">
+            <div class="relative">
+                <input class="w-full h-12 pl-12 pr-4 rounded-2xl bg-white dark:bg-slate-800 border-none shadow-sm" placeholder="Хаана амрах вэ?">
+                <span class="material-symbols-outlined absolute left-4 top-3 text-slate-400">search</span>
+            </div>
+
+            <div class="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
+                <button class="px-6 py-2 bg-primary text-white rounded-full whitespace-nowrap">Бүгд</button>
+                <button class="px-6 py-2 bg-white dark:bg-slate-800 rounded-full whitespace-nowrap">Гэр буудал</button>
+                <button class="px-6 py-2 bg-white dark:bg-slate-800 rounded-full whitespace-nowrap">Лож</button>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6">
+                <div onclick="showPage('details')" class="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-700">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80')"></div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-lg text-blue-500">Khuvsgul Lake Lodge</h3>
+                            <span class="flex items-center text-orange-400 font-bold"><span class="material-symbols-outlined text-sm">star</span>4.8</span>
+                        </div>
+                        <p class="text-slate-500 text-sm flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> Хатгал, Хөвсгөл</p>
+                        <div class="mt-4 flex justify-between items-end">
+                            <p class="font-bold text-xl">180,000₮ <span class="text-xs text-slate-400 font-normal">/ хоног</span></p>
+                            <button class="bg-primary/10 text-primary px-4 py-2 rounded-lg font-bold text-sm">Харах</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="details" class="app-page hidden">
+        <div class="relative h-80">
+            <button onclick="showPage('home')" class="absolute top-6 left-6 z-10 size-10 bg-white/50 backdrop-blur rounded-full flex items-center justify-center">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80')"></div>
+        </div>
+        <div class="p-6">
+            <h1 class="text-2xl font-bold mb-2">Khuvsgul Lake Lodge</h1>
+            <p class="text-slate-500 mb-6">Хөвсгөл нуурын эрэг дээр байрлах дээд зэрэглэлийн тохилог лож. Гэр бүл, найз нөхдөөрөө амрахад хамгийн тохиромжтой.</p>
+            <div class="flex gap-4 mb-8">
+                <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-2xl flex-1 text-center">
+                    <span class="material-symbols-outlined text-primary">wifi</span>
+                    <p class="text-xs mt-1">Free Wifi</p>
+                </div>
+                <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-2xl flex-1 text-center">
+                    <span class="material-symbols-outlined text-primary">restaurant</span>
+                    <p class="text-xs mt-1">Breakfast</p>
+                </div>
+                <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-2xl flex-1 text-center">
+                    <span class="material-symbols-outlined text-primary">hot_tub</span>
+                    <p class="text-xs mt-1">Sauna</p>
+                </div>
+            </div>
+            <button onclick="showPage('booking')" class="w-full bg-primary text-white py-4 rounded-2xl font-bold text-lg shadow-xl shadow-primary/30">Одоо захиалах</button>
+        </div>
+    </section>
+
+    <section id="booking" class="app-page hidden p-6 flex flex-col items-center justify-center text-center">
+        <div class="size-24 bg-green-500 text-white rounded-full flex items-center justify-center mb-6 animate-bounce">
+            <span class="material-symbols-outlined text-5xl">check_circle</span>
+        </div>
+        <h1 class="text-2xl font-bold mb-2">Захиалга баталгаажлаа!</h1>
+        <p class="text-slate-500 mb-8">Таны захиалгын дугаар #7721-00. Мэдээллийг таны имэйл рүү илгээлээ.</p>
+        <button onclick="showPage('home')" class="bg-primary text-white px-8 py-3 rounded-xl font-bold">Нүүр хуудас руу буцах</button>
+    </section>
+
+    <section id="chats" class="app-page hidden">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold mb-6">Зурвасууд</h1>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-50 dark:border-slate-700">
+                    <div class="size-14 rounded-full bg-blue-100 overflow-hidden">
+                        <img src="https://i.pravatar.cc/150?u=2" alt="owner">
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold">Энх-Амгалан (Эзэн)</h4>
+                        <p class="text-xs text-slate-500 truncate">Сайн байна уу! Захиалга баталгаажлаа.</p>
+                    </div>
+                    <div class="text-right text-[10px] text-slate-400">14:20</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="fixed bottom-0 left-0 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 px-6 py-4 z-50">
+        <div class="flex justify-between items-center max-w-lg mx-auto">
+            <button onclick="showPage('home')" class="flex flex-col items-center group text-primary">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-[10px] font-bold mt-1">Нүүр</span>
+            </button>
+            <button onclick="showPage('home')" class="flex flex-col items-center group text-slate-400">
+                <span class="material-symbols-outlined">map</span>
+                <span class="text-[10px] font-bold mt-1">Газар</span>
+            </button>
+            <button onclick="showPage('chats')" class="flex flex-col items-center group text-slate-400 relative">
+                <span class="material-symbols-outlined">chat</span>
+                <span class="text-[10px] font-bold mt-1">Зурвас</span>
+                <span class="absolute -top-1 -right-1 size-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+            </button>
+            <button onclick="showPage('login')" class="flex flex-col items-center group text-slate-400">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-[10px] font-bold mt-1">Би</span>
+            </button>
+        </div>
+    </nav>
+
+</body>
+</html>
