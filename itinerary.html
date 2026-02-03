@@ -1,174 +1,117 @@
 <!DOCTYPE html>
-
-<html class="light" lang="mn"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Аяллын төлөвлөгөө - Khuvsgul Lake</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#2bbdee",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#101d22",
-                    },
-                    fontFamily: {
-                        "display": ["Plus Jakarta Sans"]
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
-<style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Travel Itinerary - Khuvsgul Lake</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2bbdee",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101d22",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
 <body class="bg-background-light dark:bg-background-dark text-[#0d181b] dark:text-white font-display">
-<div class="relative flex h-screen w-full flex-col overflow-hidden">
-<!-- TopAppBar -->
-<header class="flex items-center bg-background-light dark:bg-background-dark p-6 pb-2 safe-top">
-  <h2 class="text-[#0d181b] dark:text-white text-xl font-extrabold leading-tight tracking-tight flex-1 text-center">
-    Аяллын төлөвлөгөө
-  </h2>
-</header>
-<!-- Hero Card for Context -->
-<div class="px-4 py-3">
-<div class="relative h-32 w-full overflow-hidden rounded-xl bg-slate-200">
-<img alt="Khuvsgul Lake" class="h-full w-full object-cover" data-alt="Beautiful blue lake surrounded by mountains and forests" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXOi-M0ltddBh9f1VBu7Lqmp2cx_jGgqMSDzKYYNG8QrKzr558VqD4guh53uoL6le8x65DcyfEVdeBZnNxTMe63XfDkB2IGaPm6kTc3HmEQPtGubZvSUvtkhqUnEfo6dGtabvK8ShRBnwFOZR9inGBw0w5dtmV6oRXqAxZVcNGzWWVJ4TieypXBvj1RZNkuI3yOQn1EFoSrol6rZq1ad1R2BY2BLrm7ccmbPPIskzX3dpO7ej2A6jRSEu3vOZycdN_UhrIQRoPAViZ"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
-<div>
-<h3 class="text-white font-bold text-xl">Хөвсгөл нуур</h3>
-<p class="text-white/80 text-sm">7 хоногийн аялал</p>
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-[430px] mx-auto bg-white dark:bg-background-dark shadow-xl">
+    
+    <header class="sticky top-0 z-50 flex items-center bg-white/90 dark:bg-background-dark/90 backdrop-blur-md p-6 pb-4 safe-top border-b border-gray-100 dark:border-gray-800">
+        <h2 class="text-[#0d181b] dark:text-white text-xl font-extrabold leading-tight tracking-tight flex-1 text-center">
+            Travel Itinerary
+        </h2>
+    </header>
+
+    <div class="px-4 py-3">
+        <div class="relative h-32 w-full overflow-hidden rounded-xl bg-slate-200">
+            <img alt="Khuvsgul Lake" class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1521330784833-ad58f0b3010a?auto=format&fit=crop&w=800&q=80"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                <div>
+                    <h3 class="text-white font-bold text-xl">Lake Khuvsgul</h3>
+                    <p class="text-white/80 text-sm">7 Days Adventure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white/90 dark:bg-background-dark/90 backdrop-blur-md sticky top-[68px] z-40 border-b border-[#cfe1e7] dark:border-slate-700">
+        <div class="flex px-4 gap-8 overflow-x-auto no-scrollbar">
+            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4 whitespace-nowrap" href="#">
+                <p class="text-sm font-bold">Day 1</p>
+            </a>
+            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#4c869a] dark:text-slate-400 pb-[13px] pt-4 whitespace-nowrap" href="#">
+                <p class="text-sm font-bold">Day 2</p>
+            </a>
+            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#4c869a] dark:text-slate-400 pb-[13px] pt-4 whitespace-nowrap" href="#">
+                <p class="text-sm font-bold">Day 3</p>
+            </a>
+        </div>
+    </div>
+
+    <main class="flex-1 pb-24 px-6 pt-6">
+        <div class="grid grid-cols-[48px_1fr] gap-x-2">
+            <div class="flex flex-col items-center gap-1 pt-1">
+                <div class="bg-primary/20 p-2 rounded-full text-primary">
+                    <span class="material-symbols-outlined">restaurant</span>
+                </div>
+                <div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-10 grow"></div>
+            </div>
+            <div class="flex flex-1 flex-col pb-8">
+                <p class="font-bold">Breakfast</p>
+                <p class="text-[#4c869a] text-sm">08:30 AM • Tourist Camp</p>
+            </div>
+
+            <div class="flex flex-col items-center gap-1">
+                <div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-2"></div>
+                <div class="bg-primary/20 p-2 rounded-full text-primary">
+                    <span class="material-symbols-outlined">pets</span>
+                </div>
+                <div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-10 grow"></div>
+            </div>
+            <div class="flex flex-1 flex-col pb-8">
+                <p class="font-bold">Horse Riding</p>
+                <p class="text-[#4c869a] text-sm">10:00 AM • Along the shore</p>
+            </div>
+        </div>
+    </main>
+
+    <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] border-t border-gray-100 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-4 pb-6 pt-2 z-50">
+        <div class="flex gap-2">
+            <a href="index.html" class="flex flex-1 flex-col items-center gap-1 text-[#4c869a]">
+                <span class="material-symbols-outlined">home</span>
+                <p class="text-[10px] font-medium">Home</p>
+            </a>
+            <a href="itinerary.html" class="flex flex-1 flex-col items-center gap-1 text-primary">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+                <p class="text-[10px] font-medium">Itinerary</p>
+            </a>
+            <a href="#" class="flex flex-1 flex-col items-center gap-1 text-[#4c869a]">
+                <span class="material-symbols-outlined">map</span>
+                <p class="text-[10px] font-medium">Map</p>
+            </a>
+            <a href="#" class="flex flex-1 flex-col items-center gap-1 text-[#4c869a]">
+                <span class="material-symbols-outlined">person</span>
+                <p class="text-[10px] font-medium">Profile</p>
+            </a>
+        </div>
+    </nav>
 </div>
-</div>
-</div>
-</div>
-<!-- Tabs -->
-<div class="bg-background-light dark:bg-background-dark sticky top-0 z-10">
-<div class="flex border-b border-[#cfe1e7] dark:border-slate-700 px-4 gap-8 overflow-x-auto no-scrollbar">
-<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4 whitespace-nowrap" href="#">
-<p class="text-sm font-bold leading-normal tracking-[0.015em]">Өдөр 1</p>
-</a>
-<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#4c869a] dark:text-slate-400 pb-[13px] pt-4 whitespace-nowrap" href="#">
-<p class="text-sm font-bold leading-normal tracking-[0.015em]">Өдөр 2</p>
-</a>
-<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#4c869a] dark:text-slate-400 pb-[13px] pt-4 whitespace-nowrap" href="#">
-<p class="text-sm font-bold leading-normal tracking-[0.015em]">Өдөр 3</p>
-</a>
-<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#4c869a] dark:text-slate-400 pb-[13px] pt-4 whitespace-nowrap" href="#">
-<p class="text-sm font-bold leading-normal tracking-[0.015em]">Өдөр 4</p>
-</a>
-</div>
-</div>
-<!-- Main Content Area (Timeline) -->
-<main class="flex-1 overflow-y-auto pb-24">
-<div class="grid grid-cols-[48px_1fr] gap-x-2 px-6 pt-6">
-<!-- Item 1 -->
-<div class="flex flex-col items-center gap-1 pt-1">
-<div class="bg-primary/20 p-2 rounded-full text-primary">
-<span class="material-symbols-outlined">restaurant</span>
-</div>
-<div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-10 grow"></div>
-</div>
-<div class="flex flex-1 flex-col pb-8">
-<p class="text-[#0d181b] dark:text-white text-base font-bold leading-normal">Өглөөний цай</p>
-<p class="text-[#4c869a] dark:text-slate-400 text-sm font-normal leading-normal">08:30 AM • Жуулчны бааз</p>
-</div>
-<!-- Item 2 -->
-<div class="flex flex-col items-center gap-1">
-<div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-2"></div>
-<div class="bg-primary/20 p-2 rounded-full text-primary">
-<span class="material-symbols-outlined">bedroom_child</span>
-</div>
-<div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-10 grow"></div>
-</div>
-<div class="flex flex-1 flex-col pb-8">
-<p class="text-[#0d181b] dark:text-white text-base font-bold leading-normal">Морь унах</p>
-<p class="text-[#4c869a] dark:text-slate-400 text-sm font-normal leading-normal">10:00 AM • Нуурын эрэг дагуу</p>
-<div class="mt-3 w-full h-32 rounded-lg bg-slate-100 dark:bg-slate-800 overflow-hidden">
-<img alt="Horse riding" class="w-full h-full object-cover" data-alt="Person riding a horse in a beautiful field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSklCtgv_r98eU0iJ2g20r378gTuuGjLSDbZOEkmCiZiTOrW-qJPXsy8ZZDy0bNOMa9yA8r4j0EDcuJ5fEZqBdvwf34j5FEXtQhqWWIuV3-rVRz0pYQpMLzG-FQMkMeTVk09OIAZVpWJnEoTGV_9BX3Uli-H4RToTnxzE5NMqkUqjygeDiNMleIjX2BW3vApDHm5dTMJotZvaXOBD2tOHYPy__Z21khJ2Neab3rjr77y6i-18IZnzrmPVPzMsPF9TxzX-nnrubw5MD"/>
-</div>
-</div>
-<!-- Item 3 -->
-<div class="flex flex-col items-center gap-1">
-<div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-2"></div>
-<div class="bg-primary/20 p-2 rounded-full text-primary">
-<span class="material-symbols-outlined">lunch_dining</span>
-</div>
-<div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-10 grow"></div>
-</div>
-<div class="flex flex-1 flex-col pb-8">
-<p class="text-[#0d181b] dark:text-white text-base font-bold leading-normal">Өдрийн хоол</p>
-<p class="text-[#4c869a] dark:text-slate-400 text-sm font-normal leading-normal">13:00 PM • Орон нутгийн зоогийн газар</p>
-</div>
-<!-- Item 4 -->
-<div class="flex flex-col items-center gap-1">
-<div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-2"></div>
-<div class="bg-primary/20 p-2 rounded-full text-primary">
-<span class="material-symbols-outlined">directions_boat</span>
-</div>
-<div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-10 grow"></div>
-</div>
-<div class="flex flex-1 flex-col pb-8">
-<p class="text-[#0d181b] dark:text-white text-base font-bold leading-normal">Завиар зугаалах</p>
-<p class="text-[#4c869a] dark:text-slate-400 text-sm font-normal leading-normal">15:00 PM • Хүсэл хад хүртэл</p>
-</div>
-<!-- Item 5 -->
-<div class="flex flex-col items-center gap-1">
-<div class="w-[2px] bg-[#cfe1e7] dark:bg-slate-700 h-2"></div>
-<div class="bg-primary/20 p-2 rounded-full text-primary">
-<span class="material-symbols-outlined">local_fire_department</span>
-</div>
-</div>
-<div class="flex flex-1 flex-col pb-12">
-<p class="text-[#0d181b] dark:text-white text-base font-bold leading-normal">Оройн хоол ба Түүдэг гал</p>
-<p class="text-[#4c869a] dark:text-slate-400 text-sm font-normal leading-normal">19:00 PM • Баазын гадна</p>
-</div>
-</div>
-</main>
-<!-- FAB -->
-<div class="fixed bottom-24 right-6 z-20">
-<button class="flex size-14 cursor-pointer items-center justify-center rounded-full bg-primary text-white shadow-lg active:scale-95 transition-transform">
-<span class="material-symbols-outlined" style="font-size: 32px;">add</span>
-</button>
-</div>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 left-0 right-0 border-t border-[#e7f0f3] dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-4 pb-6 pt-2 z-30">
-<div class="flex gap-2">
-  <a href="index.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-[#4c869a] dark:text-slate-400">
-    <span class="material-symbols-outlined">home</span>
-    <p class="text-xs font-medium leading-normal tracking-[0.015em]">Нүүр</p>
-  </a>
-  <a href="itinerary.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-primary">
-    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
-    <p class="text-xs font-medium leading-normal tracking-[0.015em]">Хөтөлбөр</p>
-  </a>
-  <a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#4c869a] dark:text-slate-400" href="#">
-    <span class="material-symbols-outlined">map</span>
-    <p class="text-xs font-medium leading-normal tracking-[0.015em]">Газрын зураг</p>
-  </a>
-  <a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#4c869a] dark:text-slate-400" href="#">
-    <span class="material-symbols-outlined">person</span>
-    <p class="text-xs font-medium leading-normal tracking-[0.015em]">Профайл</p>
-  </a>
-</div>
-</nav>
-</div>
-</body></html>
+</body>
+</html>
